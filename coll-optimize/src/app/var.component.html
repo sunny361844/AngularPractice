@@ -1,0 +1,18 @@
+<h3 class="page-header">Add a Decision Variable</h3>
+<button type="button" (click)="addNewRow()" class="btn btn-primary">Add new variable</button><br>
+<form [formGroup]="invoiceForm">
+  <div formArrayName="itemRows">
+    <div *ngFor="let itemrow of invoiceForm.controls.itemRows.controls; let i=index" [formGroupName]="i">
+      <h4>Decision Variable#{{ i + 1 }}</h4>
+      <div class="form-group">
+        <label>Variable</label>
+        <input formControlName="itemname" class="form-control">
+      </div>
+      <button *ngIf="invoiceForm.controls.itemRows.controls.length > 1" (click)="deleteRow(i)" class="btn btn-danger">
+        Delete Button
+      </button>
+    </div>
+  </div>
+
+</form>
+
